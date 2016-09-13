@@ -1,0 +1,95 @@
+D, [2016-09-06T02:18:03.928097 #20690] DEBUG -- :   [1m[35m (116.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+D, [2016-09-06T02:18:04.036563 #20690] DEBUG -- :   [1m[35m (103.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-09-06T02:18:04.056716 #20690] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-09-06T02:18:04.063886 #20690]  INFO -- : Migrating to CreatePosts (20160905084524)
+D, [2016-09-06T02:18:04.067349 #20690] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-06T02:18:04.070298 #20690] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-09-06T02:18:04.076072 #20690] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160905084524"]]
+D, [2016-09-06T02:18:04.186889 #20690] DEBUG -- :   [1m[35m (110.5ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-09-06T02:18:04.187079 #20690]  INFO -- : Migrating to DeviseCreateUsers (20160905085643)
+D, [2016-09-06T02:18:04.188358 #20690] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-06T02:18:04.190750 #20690] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-09-06T02:18:04.191393 #20690] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
+D, [2016-09-06T02:18:04.192725 #20690] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+D, [2016-09-06T02:18:04.193951 #20690] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2016-09-06T02:18:04.194858 #20690] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+D, [2016-09-06T02:18:04.196599 #20690] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160905085643"]]
+D, [2016-09-06T02:18:04.313529 #20690] DEBUG -- :   [1m[35m (116.6ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-09-06T02:18:04.313704 #20690]  INFO -- : Migrating to DeviseCreateAdminUsers (20160905091811)
+D, [2016-09-06T02:18:04.314991 #20690] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-06T02:18:04.317218 #20690] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2016-09-06T02:18:04.318797 #20690] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")[0m
+D, [2016-09-06T02:18:04.319991 #20690] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_admin_users_on_email' AND type='index'
+[0m
+D, [2016-09-06T02:18:04.320847 #20690] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+D, [2016-09-06T02:18:04.322530 #20690] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160905091811"]]
+D, [2016-09-06T02:18:04.447355 #20690] DEBUG -- :   [1m[35m (124.4ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-09-06T02:18:04.447536 #20690]  INFO -- : Migrating to CreateActiveAdminComments (20160905091813)
+D, [2016-09-06T02:18:04.448704 #20690] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-06T02:18:04.450907 #20690] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "namespace" varchar, "body" text, "resource_id" varchar NOT NULL, "resource_type" varchar NOT NULL, "author_type" varchar, "author_id" integer, "created_at" datetime, "updated_at" datetime)[0m
+D, [2016-09-06T02:18:04.452410 #20690] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+D, [2016-09-06T02:18:04.453588 #20690] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+D, [2016-09-06T02:18:04.454482 #20690] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" ("author_type", "author_id")[0m
+D, [2016-09-06T02:18:04.455660 #20690] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_author_type_and_author_id' AND type='index'
+[0m
+D, [2016-09-06T02:18:04.456371 #20690] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_active_admin_comments_on_namespace' AND type='index'
+[0m
+D, [2016-09-06T02:18:04.457279 #20690] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments" ("resource_type", "resource_id")[0m
+D, [2016-09-06T02:18:04.458972 #20690] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160905091813"]]
+D, [2016-09-06T02:18:04.589356 #20690] DEBUG -- :   [1m[35m (130.0ms)[0m  [1m[36mcommit transaction[0m
+I, [2016-09-06T02:18:04.589535 #20690]  INFO -- : Migrating to AddAttachmentImageToPosts (20160905094336)
+D, [2016-09-06T02:18:04.590557 #20690] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-06T02:18:04.592226 #20690] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "posts" ADD "image_file_name" varchar[0m
+D, [2016-09-06T02:18:04.593048 #20690] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" ADD "image_content_type" varchar[0m
+D, [2016-09-06T02:18:04.593893 #20690] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" ADD "image_file_size" integer[0m
+D, [2016-09-06T02:18:04.594353 #20690] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "posts" ADD "image_updated_at" datetime[0m
+D, [2016-09-06T02:18:04.594914 #20690] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160905094336"]]
+D, [2016-09-06T02:18:04.694565 #20690] DEBUG -- :   [1m[35m (99.4ms)[0m  [1m[36mcommit transaction[0m
+D, [2016-09-06T02:18:04.699432 #20690] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+D, [2016-09-06T02:18:04.701084 #20690] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-06T02:18:04.701724 #20690] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "production"], ["created_at", 2016-09-06 00:18:04 UTC], ["updated_at", 2016-09-06 00:18:04 UTC]]
+D, [2016-09-06T02:18:04.761225 #20690] DEBUG -- :   [1m[35m (59.2ms)[0m  [1m[36mcommit transaction[0m
+D, [2016-09-06T02:19:53.357902 #20962] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-09-06T02:19:53.362633 #20962] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+D, [2016-09-06T02:19:53.364290 #20962] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-06T02:19:53.364852 #20962] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+D, [2016-09-11T20:19:24.952511 #17360] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-09-11T20:19:24.957076 #17360] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+D, [2016-09-11T20:19:24.958478 #17360] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-11T20:19:24.958966 #17360] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+D, [2016-09-11T21:54:04.913023 #19065] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-09-11T21:54:04.917692 #19065] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+D, [2016-09-11T21:54:04.919129 #19065] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+D, [2016-09-11T21:54:04.919632 #19065] DEBUG -- :   [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
