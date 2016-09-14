@@ -6,7 +6,8 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier' 
 gem 'coffee-rails', '~> 4.2'
-
+#gem 'mysql2'
+gem 'pg', '~> 0.18.4'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
